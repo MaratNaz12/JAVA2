@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:application.properties")
+@PropertySource("file:/home/marat/JAVA2/src/main/resources/application.properties")
 public class HibernateDatabaseConfig {
     @Value("${driver}")
     private String DB_DRIVER;
@@ -25,16 +25,28 @@ public class HibernateDatabaseConfig {
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
+        System.out.println(DB_URL);
+        System.out.println(DB_DRIVER);
+        System.out.println(DB_PASSWORD);
+        System.out.println(DB_USERNAME);
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        System.out.println(1);
         sessionFactory.setDataSource(oraDataSource());
+        System.out.println(2);
         sessionFactory.setPackagesToScan("com.example.java_prac.models");
+        System.out.println(3);
 
         Properties hibernateProperties = new Properties();
+        System.out.println(4);
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+        System.out.println(5);
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        System.out.println(6);
         hibernateProperties.setProperty("connection_pool_size", "1");
+        System.out.println(7);
 
         sessionFactory.setHibernateProperties(hibernateProperties);
+        System.out.println(8);
 
         return sessionFactory;
     }
