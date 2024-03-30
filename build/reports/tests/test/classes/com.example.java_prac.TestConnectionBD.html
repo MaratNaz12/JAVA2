@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.005s</div>
+<div class="counter">0.009s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 <a name="initializationError"></a>
 <h3 class="failures">initializationError</h3>
 <span class="code">
-<pre>java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@31a4db4f testClass = com.example.java_prac.TestConnectionBD, locations = [], classes = [com.example.java_prac.JavaPracApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [PropertySourceDescriptor[locations=[classpath:application.properties], ignoreResourceNotFound=false, name=null, propertySourceFactory=null, encoding=null]], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@176b3f44, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@66ac5762, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@517d4a0d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6aa3a905, org.springframework.boot.test.context.SpringBootTestAnnotation@26a972fe], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+<pre>java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@5810772a testClass = com.example.java_prac.TestConnectionBD, locations = [], classes = [com.example.java_prac.JavaPracApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [PropertySourceDescriptor[locations=[classpath:application.properties], ignoreResourceNotFound=false, name=null, propertySourceFactory=null, encoding=null]], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@176b3f44, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@66ac5762, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@517d4a0d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6aa3a905, org.springframework.boot.test.context.SpringBootTestAnnotation@cdf30dc3], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
 	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
@@ -158,7 +158,7 @@
 	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/configs/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
 	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
 	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
 	at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
@@ -244,7 +244,7 @@ Caused by: org.postgresql.util.PSQLException: ВАЖНО: пользовател
 </thead>
 <tr>
 <td class="failures">initializationError</td>
-<td class="failures">0.005s</td>
+<td class="failures">0.009s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -252,8 +252,8 @@ Caused by: org.postgresql.util.PSQLException: ВАЖНО: пользовател
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>16:53:59.690 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.java_prac.TestConnectionBD]: TestConnectionBD does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-16:53:59.794 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.java_prac.JavaPracApplication for test class com.example.java_prac.TestConnectionBD
+<pre>17:21:59.641 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.java_prac.TestConnectionBD]: TestConnectionBD does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:21:59.738 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.java_prac.JavaPracApplication for test class com.example.java_prac.TestConnectionBD
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -263,13 +263,13 @@ Caused by: org.postgresql.util.PSQLException: ВАЖНО: пользовател
 
  :: Spring Boot ::       (v3.3.0-SNAPSHOT)
 
-2024-03-30T16:54:00.190+03:00  INFO 4476 --- [java_prac] [    Test worker] com.example.java_prac.TestConnectionBD   : Starting TestConnectionBD using Java 21.0.2 with PID 4476 (started by marat in /home/marat/Рабочий стол/java_prac)
-2024-03-30T16:54:00.192+03:00  INFO 4476 --- [java_prac] [    Test worker] com.example.java_prac.TestConnectionBD   : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-03-30T16:54:00.936+03:00  INFO 4476 --- [java_prac] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30T16:54:00.967+03:00  INFO 4476 --- [java_prac] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
-2024-03-30T16:54:01.406+03:00  INFO 4476 --- [java_prac] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-03-30T16:54:01.458+03:00  INFO 4476 --- [java_prac] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-03-30T16:54:01.821+03:00  WARN 4476 --- [java_prac] [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2024-03-30T17:22:00.197+03:00  INFO 8254 --- [java_prac] [    Test worker] com.example.java_prac.TestConnectionBD   : Starting TestConnectionBD using Java 21.0.2 with PID 8254 (started by marat in /home/marat/JAVA2)
+2024-03-30T17:22:00.201+03:00  INFO 8254 --- [java_prac] [    Test worker] com.example.java_prac.TestConnectionBD   : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-03-30T17:22:01.053+03:00  INFO 8254 --- [java_prac] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30T17:22:01.092+03:00  INFO 8254 --- [java_prac] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 0 JPA repository interfaces.
+2024-03-30T17:22:01.545+03:00  INFO 8254 --- [java_prac] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-30T17:22:01.597+03:00  INFO 8254 --- [java_prac] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-30T17:22:02.001+03:00  WARN 8254 --- [java_prac] [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.NullPointerException: Cannot invoke &quot;org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)&quot; because the return value of &quot;org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()&quot; is null
 	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
@@ -392,17 +392,17 @@ java.lang.NullPointerException: Cannot invoke &quot;org.hibernate.engine.jdbc.sp
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2024-03-30T16:54:01.891+03:00  WARN 4476 --- [java_prac] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-03-30T16:54:02.976+03:00  INFO 4476 --- [java_prac] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-03-30T16:54:03.021+03:00  WARN 4476 --- [java_prac] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 28P01
-2024-03-30T16:54:03.022+03:00 ERROR 4476 --- [java_prac] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)
-2024-03-30T16:54:03.028+03:00  WARN 4476 --- [java_prac] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
-2024-03-30T16:54:03.039+03:00  INFO 4476 --- [java_prac] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-03-30T17:22:02.073+03:00  WARN 8254 --- [java_prac] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-30T17:22:03.171+03:00  INFO 8254 --- [java_prac] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-30T17:22:03.214+03:00  WARN 8254 --- [java_prac] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 28P01
+2024-03-30T17:22:03.214+03:00 ERROR 8254 --- [java_prac] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)
+2024-03-30T17:22:03.220+03:00  WARN 8254 --- [java_prac] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/configs/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
+2024-03-30T17:22:03.230+03:00  INFO 8254 --- [java_prac] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-03-30T16:54:03.060+03:00 ERROR 4476 --- [java_prac] [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2024-03-30T17:22:03.253+03:00 ERROR 8254 --- [java_prac] [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/configs/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.5.jar:6.1.5]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
@@ -549,9 +549,9 @@ Caused by: org.postgresql.util.PSQLException: ВАЖНО: пользовател
 	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
 	... 120 common frames omitted
 
-2024-03-30T16:54:03.109+03:00  WARN 4476 --- [java_prac] [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.example.java_prac.TestConnectionBD@5ca8c904]
+2024-03-30T17:22:03.297+03:00  WARN 8254 --- [java_prac] [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.example.java_prac.TestConnectionBD@5d67b2b3]
 
-java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@31a4db4f testClass = com.example.java_prac.TestConnectionBD, locations = [], classes = [com.example.java_prac.JavaPracApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [PropertySourceDescriptor[locations=[classpath:application.properties], ignoreResourceNotFound=false, name=null, propertySourceFactory=null, encoding=null]], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@176b3f44, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@66ac5762, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@517d4a0d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6aa3a905, org.springframework.boot.test.context.SpringBootTestAnnotation@26a972fe], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@5810772a testClass = com.example.java_prac.TestConnectionBD, locations = [], classes = [com.example.java_prac.JavaPracApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [PropertySourceDescriptor[locations=[classpath:application.properties], ignoreResourceNotFound=false, name=null, propertySourceFactory=null, encoding=null]], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@176b3f44, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@66ac5762, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@517d4a0d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6aa3a905, org.springframework.boot.test.context.SpringBootTestAnnotation@cdf30dc3], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180) ~[spring-test-6.1.5.jar:6.1.5]
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.1.5.jar:6.1.5]
 	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191) ~[spring-test-6.1.5.jar:6.1.5]
@@ -630,7 +630,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMerge
 	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) ~[na:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/example/java_prac/configs/HibernateDatabaseConfig.class]: Unable to open JDBC Connection for DDL execution [ВАЖНО: пользователь &quot;marat&quot; не прошёл проверку подлинности (по паролю)] [n/a]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.5.jar:6.1.5]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
@@ -751,7 +751,7 @@ Unconditional classes:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.7</a> at 30 мар. 2024 г., 16:54:03</p>
+<a href="http://www.gradle.org">Gradle 8.7</a> at 30 мар. 2024 г., 17:22:03</p>
 </div>
 </div>
 </body>

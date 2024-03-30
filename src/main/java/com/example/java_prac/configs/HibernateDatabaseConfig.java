@@ -1,4 +1,4 @@
-package com.example.java_prac;
+package com.example.java_prac.configs;
 
 
 import org.springframework.beans.factory.annotation.Value;
