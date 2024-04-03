@@ -9,9 +9,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Account implements CommonEntity<Long> {
+public class Account implements CommonEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -40,13 +41,16 @@ public class Account implements CommonEntity<Long> {
 
 
     @Column(nullable = false, name = "curperiod")
+    @NonNull
     private Long curperiod;
 
     @Column(nullable = false, name = "curaccum")
+    @NonNull
     private Long curaccum;
 
 
     @Column(nullable = false, name = "curbalance")
+    @NonNull
     private Long curbalance;
 
 

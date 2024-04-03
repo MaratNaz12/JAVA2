@@ -1,15 +1,29 @@
 package marat.DAO;
 
 
+import marat.models.Account;
+import marat.models.Client;
 import marat.models.Operation;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 
-public interface OperationDAO {
+public interface OperationDAO extends CommonDAO<Operation> {
 
-    public List<Operation> GetWithFilterRange(String fieldName, int lo, int hi);
 
-    public List<Operation> GetWithFilterFree(String fieldName, String sign, int value);
+    public List<Operation> GetByTo(Account client);
+
+    public List<Operation> GetByFrom(Account client);
+
+
+    public List<Operation> GetWithFilterRangeSum(int lo, int hi);
+
+    public List<Operation> GetWithFilterFree(String sign, int value);
+
+
+    public List<Operation> GetWithFilterRangeTime(Timestamp t1, Timestamp t2);
+
+    public List<Operation> GetWithFilterFreeTime(String sign, Timestamp t2);
 
 }

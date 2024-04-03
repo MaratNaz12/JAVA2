@@ -6,7 +6,7 @@ import marat.models.Office;
 
 import java.util.List;
 
-public interface ClientOfficeDAO extends CommonDAO<ClientOffice, Long> {
+public interface ClientOfficeDAO extends CommonDAO<ClientOffice> {
 
 
     public List<Client> GetClient(int id);

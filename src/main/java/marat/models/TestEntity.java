@@ -10,9 +10,10 @@ import marat.models.CommonEntity;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class TestEntity implements CommonEntity<Long> {
+public class TestEntity implements CommonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

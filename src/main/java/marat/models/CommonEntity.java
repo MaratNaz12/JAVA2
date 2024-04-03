@@ -1,7 +1,7 @@
 package marat.models;
 
-public interface CommonEntity<ID> {
-    ID getId();
+public interface CommonEntity {
+    Long getId();
 
-    void setId(ID id);
+    void setId(Long id);
 }

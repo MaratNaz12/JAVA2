@@ -3,8 +3,11 @@ package marat.DAO.impl;
 import marat.DAO.CommonDAO;
 import marat.models.CommonEntity;
 import marat.utils.HibernateSessionFactoryUtil;
+import marat.utils.ReflectionTools;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
@@ -12,19 +15,22 @@ import java.util.Collection;
 import java.util.List;
 
 
+@Repository
+public abstract class CommonDAOImpl<T extends CommonEntity> implements CommonDAO<T> {
+//    @Autowired
+//    SessionFactory sessionFactory;
+//
+//    @Override
+//    public Session getSession() {
+//        return sessionFactory.getCurrentSession();
+//    }
 
-public class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Serializable> implements CommonDAO<T, ID> {
 
-
-    protected Class<T> persistentClass;
-
-    public CommonDAOImpl(Class<T> entityClass) {
-        this.persistentClass = entityClass;
-    }
+    protected Class<T> persistentClass = ReflectionTools.getGeneric(getClass(), 0);;
 
 
     @Override
-    public T getById(ID id) {
+    public T getById(Long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
         T b = session.get(persistentClass, id);
@@ -44,25 +50,23 @@ public class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Serializable> 
     }
 
     @Override
-    public void save(T entity) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
-        if (entity.getId() != null) {
-            entity.setId(null);
-        }
-        session.beginTransaction();
-        session.saveOrUpdate(entity);
-        session.getTransaction().commit();
-
-    }
-
-    @Override
-    public void saveCollection(List<T> entities) {
+    public void save(T entity){
         Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
-        for (T entity : entities) {
-            this.save(entity);
-        }
+        session.persist(entity);
+        session.flush();
         t.commit();
+        session.close();
+    }
+    @Override
+    public void saveCollection(List<T> entities){
+        HibernateSessionFactoryUtil.getSessionFactory()
+                .inTransaction(session -> {
+                    for (T obj : entities) {
+                        session.persist(obj);
+                    }
+                    session.flush();
+                });
     }
 
 
@@ -85,10 +89,10 @@ public class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Serializable> 
 
 
     @Override
-    public void deleteById(ID id) {
+    public void deleteById(Long id) {
+        T entity = getById(id);
         Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
-        T entity = getById(id);
         session.delete(entity);
         t.commit();
     }

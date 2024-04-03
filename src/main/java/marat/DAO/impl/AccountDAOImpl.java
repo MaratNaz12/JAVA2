@@ -5,15 +5,13 @@ import marat.models.Account;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+public class AccountDAOImpl extends CommonDAOImpl<Account> implements AccountDAO {
 
-public class AccountDAOImpl extends CommonDAOImpl<Account, Long> implements AccountDAO {
-
-    public AccountDAOImpl() {
-        super(Account.class);
-    }
 
     @Override
     public List<Account> GetWithFilter(String fieldName, int value_) {

@@ -13,11 +13,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ClientOfficeDAOImpl extends CommonDAOImpl<ClientOffice, Long> implements ClientOfficeDAO {
+public class ClientOfficeDAOImpl extends CommonDAOImpl<ClientOffice> implements ClientOfficeDAO {
 
-    public ClientOfficeDAOImpl() {
-        super(ClientOffice.class);
-    }
+
 
     public List<Client> GetClient(int office_id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();

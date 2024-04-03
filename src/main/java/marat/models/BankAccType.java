@@ -9,9 +9,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class BankAccType implements CommonEntity<Long> {
+public class BankAccType implements CommonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

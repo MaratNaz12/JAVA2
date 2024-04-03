@@ -8,9 +8,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class ClientOffice implements CommonEntity<Long> {
+public class ClientOffice implements CommonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

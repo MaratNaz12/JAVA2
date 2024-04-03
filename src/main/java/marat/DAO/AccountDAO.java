@@ -4,7 +4,7 @@ import marat.models.Account;
 
 import java.util.List;
 
-public interface AccountDAO extends CommonDAO<Account, Long> {
+public interface AccountDAO extends CommonDAO<Account> {
 
 
     public List<Account> GetWithFilter(String fieldName, int value);

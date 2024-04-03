@@ -1,12 +1,13 @@
 package marat.DAO;
 
 import marat.models.CommonEntity;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.List;
 
-public interface CommonDAO<T extends CommonEntity<ID>, ID> {
-    T getById(ID id);
+public interface CommonDAO<T extends CommonEntity> {
+    T getById(Long id);
 
     List<T> getAll();
 
@@ -16,7 +17,7 @@ public interface CommonDAO<T extends CommonEntity<ID>, ID> {
 
     void delete(T entity);
 
-    void deleteById(ID id);
+    void deleteById(Long id);
 
     void update(T entity);
 }

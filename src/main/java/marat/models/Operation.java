@@ -11,9 +11,10 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Operation implements CommonEntity<Long> {
+public class Operation implements CommonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +41,7 @@ public class Operation implements CommonEntity<Long> {
 
     @Column(nullable = false, name = "dayperiod")
     @NonNull
-    private Timestamp operationtime;
+    private Timestamp dayperiod;
 
 
 }
