@@ -1,23 +1,21 @@
 package marat.DAO.impl;
 
-import marat.models.TestEntity;
 import marat.DAO.TestEntityDAO;
+import marat.models.TestEntity;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CommonDAOTest {
 
-//   private CommonDAOImpl TestDao = CommonDAOImpl();
+    //   private CommonDAOImpl TestDao = CommonDAOImpl();
     @Autowired
     TestEntityDAO testEntityDAO;
 
@@ -31,7 +29,7 @@ class CommonDAOTest {
         }
 
         testEntityDAO.saveCollection(entities);
-        assert testEntityDAO.getAll().size() == 5;
+        Assertions.assertEquals(testEntityDAO.getAll().size(), 5);
     }
 
     @AfterEach
@@ -44,11 +42,11 @@ class CommonDAOTest {
     }
 
     @Test
-    void save(){
+    void save() {
         TestEntity testEntity = new TestEntity("hello");
         long ent_num = testEntityDAO.getAll().size();
         testEntityDAO.save(testEntity);
-        assert testEntityDAO.getAll().size() - ent_num == 1;
+        Assertions.assertEquals(testEntityDAO.getAll().size() - ent_num, 1);
     }
 
     @Test
@@ -59,38 +57,39 @@ class CommonDAOTest {
         testEntityDAO.update(entity_1);
         long id = entity_1.getId();
         TestEntity entity_2 = testEntityDAO.getById(id);
-        assert entity_2.getName().equals("abc");
+        Assertions.assertEquals(entity_2.getName(), "abc");
 
     }
 
     @Test
     void delete() {
         List<TestEntity> entity_1 = testEntityDAO.getAll();
-        long int_1 = entity_1.size();
+        int int_1 = entity_1.size();
         TestEntity entity_2 = entity_1.getFirst();
         testEntityDAO.delete(entity_2);
-        long int_2 = testEntityDAO.getAll().size();
-        assert int_1 - int_2 == 1;
+        Assertions.assertEquals(int_1 - testEntityDAO.getAll().size(), 1);
+
 
     }
+
     @Test
-    void getById(){
+    void getById() {
         TestEntity entity_1 = testEntityDAO.getAll().getFirst();
         long id = entity_1.getId();
         System.out.println(id);
         TestEntity entity_2 = testEntityDAO.getById(id);
+        Assertions.assertEquals(entity_1.getId(), entity_2.getId());
+        Assertions.assertEquals(entity_1.getName(), entity_2.getName());
 
-        assert entity_1.getId() == entity_2.getId();
-        assert entity_1.getName().equals(entity_2.getName());
 
     }
 
 
     @Test
     void deleteById() {
-        TestEntity entity_1 = (TestEntity) testEntityDAO.getAll().getFirst();
+        TestEntity entity_1 = testEntityDAO.getAll().getFirst();
         long id = entity_1.getId();
         testEntityDAO.deleteById(id);
-        assert testEntityDAO.getById(id) == null;
+        Assertions.assertNull(testEntityDAO.getById(id));
     }
 }

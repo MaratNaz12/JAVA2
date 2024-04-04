@@ -5,6 +5,7 @@ import marat.models.*;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,7 @@ class AccountDAOImplTest {
         }
 
         clientDAO.saveCollection(clients);
-
-        assert clientDAO.getAll().size() == 3;
+        Assertions.assertEquals(clientDAO.getAll().size(),3);
 
         List<Office> offices = new ArrayList<>();
 
@@ -54,7 +54,8 @@ class AccountDAOImplTest {
         }
 
         officeDAO.saveCollection(offices);
-        assert officeDAO.getAll().size() == 3;
+        Assertions.assertEquals(officeDAO.getAll().size(),3);
+
 
 
         Client cfix_1 = clientDAO.getById(1L);
@@ -75,14 +76,14 @@ class AccountDAOImplTest {
         cliof.add(new ClientOffice(ofix_3, cfix_3));
 
         clientofficeDAO.saveCollection(cliof);
-        assert clientofficeDAO.getAll().size() == 6;
+        Assertions.assertEquals(clientofficeDAO.getAll().size(),6);
 
         List<BankAccType> baclist = new ArrayList<>();
         baclist.add(new BankAccType("Rare", 0.15, 1L,1L,1L,1L,1L));
         baclist.add(new BankAccType("Often", 0.05, 1L,1L,1L,1L,1L));
         bankacctypeDAO.saveCollection((baclist));
 
-        assert bankacctypeDAO.getAll().size()== 2;
+        Assertions.assertEquals(bankacctypeDAO.getAll().size(),2);
 
         List<Account> accs = new ArrayList<>();
         accs.add(new Account(cfix_1,ofix_1, bankacctypeDAO.getById(1L),0L,0L,10000L));
@@ -92,7 +93,7 @@ class AccountDAOImplTest {
 
 
         accountDAO.saveCollection(accs);
-        assert accountDAO.getAll().size() == 4;
+        Assertions.assertEquals(accountDAO.getAll().size(),4);
 
 
     }
@@ -111,22 +112,23 @@ class AccountDAOImplTest {
     @Test
     void getWithFilter() {
         List<Account>  tmp = accountDAO.GetWithFilter("curbalance", 10000);
-        assert tmp.size() == 2;
+        Assertions.assertEquals(tmp.size(),2);
 
     }
 
     @Test
     void getWithFilterBalanceRange() {
         List<Account>  tmp = accountDAO.GetWithFilterBalanceRange(9000, 19000);
-        assert tmp.size() == 3;
+        Assertions.assertEquals(tmp.size(),3);
 
     }
 
     @Test
     void getWithFilterBalanceFree() {
         List<Account>  tmp = accountDAO.GetWithFilterBalanceFree("<", 18000);
-        assert tmp.size() == 2;
+
+        Assertions.assertEquals(tmp.size(),2);
         List<Account>  tmp_2 = accountDAO.GetWithFilterBalanceFree("<=", 18000);
-        assert tmp_2.size() == 3;
+        Assertions.assertEquals(tmp_2.size(),3);
     }
 }

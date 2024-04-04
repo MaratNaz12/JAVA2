@@ -11,6 +11,7 @@ import marat.models.TestEntity;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,7 @@ class ClientOfficeDAOImplTest {
         }
 
         clientDAO.saveCollection(clients);
-        System.out.println(clientDAO.getAll().size());
-        assert clientDAO.getAll().size() == 3;
+        Assertions.assertEquals(clientDAO.getAll().size(),3);
 
         List<Office> offices = new ArrayList<>();
 
@@ -51,7 +51,7 @@ class ClientOfficeDAOImplTest {
         }
 
         officeDAO.saveCollection(offices);
-        assert officeDAO.getAll().size() == 3;
+        Assertions.assertEquals(officeDAO.getAll().size(),3);
 
 
         Client cfix_1 = clientDAO.getById(1L);
@@ -72,7 +72,7 @@ class ClientOfficeDAOImplTest {
         cliof.add(new ClientOffice(ofix_3, cfix_3));
 
         clientofficeDAO.saveCollection(cliof);
-        assert clientofficeDAO.getAll().size() == 6;
+        Assertions.assertEquals(clientofficeDAO.getAll().size(),6);
 
 
 
@@ -101,9 +101,10 @@ class ClientOfficeDAOImplTest {
         List<Client> list_1= clientofficeDAO.GetClient(1);
         List<Client> list_2= clientofficeDAO.GetClient(2);
         List<Client> list_3= clientofficeDAO.GetClient(3);
-        assert list_1.size() == 2;
-        assert list_2.size() == 2;
-        assert list_3.size() == 2;
+
+        Assertions.assertEquals(list_1.size(),2);
+        Assertions.assertEquals(list_2.size(),2);
+        Assertions.assertEquals(list_3.size(),2);
 
     }
 
@@ -112,8 +113,8 @@ class ClientOfficeDAOImplTest {
         List<Office> list_1= clientofficeDAO.GetOffice(1);
         List<Office> list_2= clientofficeDAO.GetOffice(2);
         List<Office> list_3= clientofficeDAO.GetOffice(3);
-        assert list_1.size() == 3;
-        assert list_2.size() == 1;
-        assert list_3.size() == 2;
+        Assertions.assertEquals(list_1.size(),3);
+        Assertions.assertEquals(list_2.size(),1);
+        Assertions.assertEquals(list_3.size(),2);
     }
 }

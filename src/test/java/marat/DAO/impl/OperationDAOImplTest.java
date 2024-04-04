@@ -5,6 +5,7 @@ import marat.models.*;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,8 @@ class OperationDAOImplTest {
         }
 
         clientDAO.saveCollection(clients);
-        System.out.println("1111111111111111");
-        assert clientDAO.getAll().size() == 3;
+
+        Assertions.assertEquals(clientDAO.getAll().size(),3);
 
         List<Office> offices = new ArrayList<>();
 
@@ -57,8 +58,8 @@ class OperationDAOImplTest {
         }
 
         officeDAO.saveCollection(offices);
-        System.out.println("222222222222");
-        assert officeDAO.getAll().size() == 3;
+
+        Assertions.assertEquals(officeDAO.getAll().size(),3);
 
 
         Client cfix_1 = clientDAO.getById(1L);
@@ -79,15 +80,16 @@ class OperationDAOImplTest {
         cliof.add(new ClientOffice(ofix_3, cfix_3));
 
         clientofficeDAO.saveCollection(cliof);
-        System.out.println("333333333333333333");
-        assert clientofficeDAO.getAll().size() == 6;
+        Assertions.assertEquals(clientofficeDAO.getAll().size(),6);
+
 
         List<BankAccType> baclist = new ArrayList<>();
         baclist.add(new BankAccType("Rare", 0.15, 1L, 1L, 1L, 1L, 1L));
         baclist.add(new BankAccType("Often", 0.05, 1L, 1L, 1L, 1L, 1L));
         bankacctypeDAO.saveCollection((baclist));
-        System.out.println("44444444444");
-        assert bankacctypeDAO.getAll().size() == 2;
+
+
+        Assertions.assertEquals(bankacctypeDAO.getAll().size(),2);
 
         List<Account> accs = new ArrayList<>();
 
@@ -103,8 +105,8 @@ class OperationDAOImplTest {
 
 
         accountDAO.saveCollection(accs);
-        System.out.println("555555555555555");
-        assert accountDAO.getAll().size() == 4;
+
+        Assertions.assertEquals(accountDAO.getAll().size(),4);
 
 
         Timestamp t = new Timestamp(System.currentTimeMillis());
@@ -114,8 +116,7 @@ class OperationDAOImplTest {
         opers.add(new Operation(acc_2, acc_1, 4000L, new Timestamp(System.currentTimeMillis())));
 
         operationDAO.saveCollection(opers);
-        System.out.println("66666666666");
-        assert operationDAO.getAll().size() == 3;
+        Assertions.assertEquals(operationDAO.getAll().size(),3);
 
 
     }
@@ -136,38 +137,39 @@ class OperationDAOImplTest {
     @Test
     void getWithFilterRangeSum() {
         List<Operation> opl = operationDAO.GetWithFilterRangeSum(1000, 3000);
-        assert opl.size() == 2;
+        Assertions.assertEquals(opl.size(),2);
 
     }
 
     @Test
     void GetByTo() {
         List<Operation> opl = operationDAO.GetByTo(accountDAO.getById(2L));
-        assert opl.size() ==2;
+        Assertions.assertEquals(opl.size(),2);
     }
 
     @Test
     void GetByFrom() {
         List<Operation> opl = operationDAO.GetByFrom(accountDAO.getById(2L));
-        assert opl.size() == 1;
+        Assertions.assertEquals(opl.size(),1);
+//        assert opl.size() == 1;
     }
 
     @Test
     void getWithFilterFree() {
         List<Operation> opl = operationDAO.GetWithFilterFree("=", 4000);
-        assert opl.size() ==1;
+        Assertions.assertEquals(opl.size(),1);
 
     }
     @Test
     void getWithFilterFreeTime() {
         List<Operation> opl = operationDAO.GetWithFilterFreeTime("<", new Timestamp(System.currentTimeMillis()));
-        assert opl.size() == 3 ;
+        Assertions.assertEquals(opl.size(),3);
     }
 
     @Test
     void getWithFilterRangeTime() {
         List<Operation> opl = operationDAO.GetWithFilterRangeTime(new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()));
-        assert opl.isEmpty();
+        Assertions.assertTrue(opl.isEmpty());
 
     }
 
