@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Клиенты</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:replace="general :: page-header"> </div>
+
+<div class="clients">
+    <h4>Добавить клиента:</h4>
+
+    <table>
+        <tbody>
+        <form method="post" action="/saveClient">
+            <tr>
+            <td><label for="abc">ФИО:</label></td>
+            <td><input type="text" id="clientName" required name="clientName"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Адрес:</label></td>
+            <td><input type="text" id="clientAddress" required name="clientAddress"></td>
+            </tr>
+
+            <tr>
+                <td><label for="abc">email:</label></td>
+                <td><input type="text" id="clientEmail" required name="clientEmail"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Телефон 1:</label></td>
+            <td><input type="text" id="clientTel1" required name="clientTel1"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Телефон 2:</label></td>
+            <td><input type="text" id="clientTel2" required name="clientTel2"></td>
+            </tr>
+
+            <tr>
+            <td><input id="submitButton" type="submit" value="Добавить"></td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+    <br>
+    
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> ФИО </th>
+            <th scope="col"> Адрес </th>
+            <th scope="col"> email </th>
+        </tr>
+        </thead>
+        <tbody id="table">
+        <tr th:each="client : ${clients}">
+            <td><a th:href="'/client?clientId=' + ${client.getId()}">
+                <span th:text="${client.getName()}"> </span></a></td>
+
+            <td><span th:text="${client.getAddress()}"> </span></td>
+
+            <td><span th:text="${client.getEmail()}"> </span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

@@ -2,7 +2,6 @@ package marat.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import marat.models.CommonEntity;
 
 
 @Entity

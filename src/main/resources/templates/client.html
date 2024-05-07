@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Клиент</title>
+</head>
+
+<body>
+
+<div th:replace="general :: page-header"> </div>
+
+<div class="client">
+    <div id="clientInfo">
+        <p th:text="'ФИО:       ' + ${client.getName()}"></p>
+        <p th:text="'Адрес:     ' + ${client.getAddress()}"></p>
+        <p th:text="'email:     ' + ${client.getEmail()}"></p>
+        <p th:text="'Телефон 1: ' + ${client.getTelnumber1()}"></p>
+        <p th:text="'Телефон 2: ' + ${client.getTelnumber2()}"></p>
+        <p th:if="${offices.size() != 0}" th:text="'Отделение: ' + ${offices.get(0).getName()}"></p>
+
+        <form style="margin-right: 30px" method="get" action="/editClient">
+            <input type="hidden" name="clientId" th:value="${client.getId()}"/>
+            <button id="editButton" type="submit">Редактировать</button>
+        </form>
+        <form style="margin-right: 30px" method="post" action="/removeClient">
+            <input type="hidden" name="clientId" th:value="${client.getId()}"/>
+            <button id="deleteButton" type="submit">Удалить</button>
+        </form>
+        <br>
+
+        <h4>Счета</h4>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Текущий баланс </th>
+                <th scope="col"> Начисления </th>
+            </tr>
+            </thead>
+            <tbody id="table">
+            <tr th:each="account : ${accounts}">
+                <td><span th:text="${account.getId()}"> </span></td>
+
+                <td><span th:text="${account.getCurbalance()}"> </span></td>
+
+                <td><span th:text="${account.getCuraccum()}"> </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

@@ -51,7 +51,7 @@ class CommonDAOTest {
 
     @Test
     void update() {
-        TestEntity entity_1 = testEntityDAO.getAll().getFirst();
+        TestEntity entity_1 = testEntityDAO.getAll().get(0);
         String name_f = entity_1.getName();
         entity_1.setName("abc");
         testEntityDAO.update(entity_1);
@@ -65,7 +65,7 @@ class CommonDAOTest {
     void delete() {
         List<TestEntity> entity_1 = testEntityDAO.getAll();
         int int_1 = entity_1.size();
-        TestEntity entity_2 = entity_1.getFirst();
+        TestEntity entity_2 = entity_1.get(0);
         testEntityDAO.delete(entity_2);
         Assertions.assertEquals(int_1 - testEntityDAO.getAll().size(), 1);
 
@@ -74,7 +74,7 @@ class CommonDAOTest {
 
     @Test
     void getById() {
-        TestEntity entity_1 = testEntityDAO.getAll().getFirst();
+        TestEntity entity_1 = testEntityDAO.getAll().get(0);
         long id = entity_1.getId();
         System.out.println(id);
         TestEntity entity_2 = testEntityDAO.getById(id);
@@ -87,7 +87,7 @@ class CommonDAOTest {
 
     @Test
     void deleteById() {
-        TestEntity entity_1 = testEntityDAO.getAll().getFirst();
+        TestEntity entity_1 = testEntityDAO.getAll().get(0);
         long id = entity_1.getId();
         testEntityDAO.deleteById(id);
         Assertions.assertNull(testEntityDAO.getById(id));

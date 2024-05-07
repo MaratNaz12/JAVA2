@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Редактировать</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:replace="general :: page-header"> </div>
+
+<div class="editClient">
+    <table>
+        <tbody>
+        <form method="post" action="/saveClient">
+            <tr>
+            <td><label for="abc">ФИО:</label></td>
+            <td><input type="text" id="clientName"  name="clientName" required th:value="${client.getName()}"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Адрес:</label></td>
+            <td><input type="text" id="clientAddress"  name="clientAddress" required th:value="${client.getAddress()}"></td>
+            </tr>
+
+            <tr>
+                <td><label for="abc">email:</label></td>
+                <td><input type="text" id="clientEmail"  name="clientEmail" required th:value="${client.getEmail()}"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Телефон 1:</label></td>
+            <td><input type="text" id="clientTel1"  name="clientTel1" required th:value="${client.getTelnumber1()}"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Телефон 2:</label></td>
+            <td><input type="text" id="clientTel2"  name="clientTel2" th:value="${client.getTelnumber2()}"></td>
+            </tr>
+
+            <tr>
+            <td><input id="submitButton" type="submit" value="Сохранить"></td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</html>
