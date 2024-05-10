@@ -2,15 +2,12 @@ package marat.DAO;
 
 
 import marat.models.Account;
-import marat.models.Client;
 import marat.models.Operation;
 
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.List;
 
 public interface OperationDAO extends CommonDAO<Operation> {
-
 
     public List<Operation> GetByTo(Account client);
 

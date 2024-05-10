@@ -1,9 +1,7 @@
 package marat.DAO;
 
 import marat.models.CommonEntity;
-import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface CommonDAO<T extends CommonEntity> {

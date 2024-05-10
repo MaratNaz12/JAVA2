@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public class AccountDAOImpl extends CommonDAOImpl<Account> implements AccountDAO {
 
-
     @Override
     public List<Account> GetWithFilter(String fieldName, int value_) {
 

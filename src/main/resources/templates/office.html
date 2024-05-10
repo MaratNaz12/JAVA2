@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Отделение</title>
+</head>
+
+<body>
+
+<div th:replace="general :: page-header"> </div>
+
+<div class="office">
+    <div id="officeInfo">
+        <p th:text="'ФИО:       ' + ${office.getName()}"></p>
+        <p th:text="'Адрес:     ' + ${office.getAddress()}"></p>
+        <p th:text="'email:     ' + ${office.getEmail()}"></p>
+        <p th:text="'Телефон 1: ' + ${office.getTelnumber1()}"></p>
+        <p th:text="'Телефон 2: ' + ${office.getTelnumber2()}"></p>
+
+        <form style="margin-right: 30px" method="get" action="/editOffice">
+            <input type="hidden" name="officeId" th:value="${office.getId()}"/>
+            <button id="editButton" type="submit">Редактировать</button>
+        </form>
+        <form style="margin-right: 30px" method="post" action="/removeOffice">
+            <input type="hidden" name="officeId" th:value="${office.getId()}"/>
+            <button id="deleteButton" type="submit">Удалить</button>
+        </form>
+        <br>
+
+        <h4>Клиенты</h4>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"> ФИО </th>
+                <th scope="col"> Телефон 1 </th>
+                <th scope="col"> Телефон 2 </th>
+                <th scope="col"> email </th>
+            </tr>
+            </thead>
+            <tbody id="table">
+            <tr th:each="client : ${clients}">
+                <td><a th:href="'/client?clientId=' + ${client.getId()}">
+                    <span th:text="${client.getName()}"> </span></a></td>
+
+                <td><span th:text="${client.getTelnumber1()}"> </span></td>
+
+                <td><span th:text="${client.getTelnumber2()}"> </span></td>
+
+                <td><span th:text="${client.getEmail()}"> </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

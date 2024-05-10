@@ -3,7 +3,6 @@ package marat.DAO.impl;
 
 import marat.DAO.OperationDAO;
 import marat.models.Account;
-import marat.models.Client;
 import marat.models.Operation;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
@@ -11,14 +10,12 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.List;
 
 
 
 @Repository
 public class OperationDAOImpl extends CommonDAOImpl<Operation> implements OperationDAO {
-
 
     @Override
     public List<Operation> GetByTo(Account account) {

@@ -10,42 +10,37 @@
 
 <div th:replace="general :: page-header"> </div>
 
-<div class="editClient">
+<div class="editOffice">
     <table>
         <tbody>
-        <form method="post" action="/saveClient">
+        <form method="post" action="/saveOffice">
             <tr>
-            <td><input type="hidden" name="clientId" th:value="${client.getId()}"/></td>
+            <td><input type="hidden" name="officeId" th:value="${office.getId()}"/></td>
             </tr>
 
             <tr>
             <td><label for="abc">ФИО:</label></td>
-            <td><input type="text" id="clientName"  name="clientName" required th:value="${client.getName()}"></td>
+            <td><input type="text" id="officeName"  name="officeName" required th:value="${office.getName()}"></td>
             </tr>
 
             <tr>
             <td><label for="abc">Адрес:</label></td>
-            <td><input type="text" id="clientAddress"  name="clientAddress" required th:value="${client.getAddress()}"></td>
+            <td><input type="text" id="officeAddress"  name="officeAddress" required th:value="${office.getAddress()}"></td>
             </tr>
 
             <tr>
                 <td><label for="abc">email:</label></td>
-                <td><input type="text" id="clientEmail"  name="clientEmail" required th:value="${client.getEmail()}"></td>
+                <td><input type="text" id="officeEmail"  name="officeEmail" required th:value="${office.getEmail()}"></td>
             </tr>
 
             <tr>
             <td><label for="abc">Телефон 1:</label></td>
-            <td><input type="text" id="clientTel1"  name="clientTel1" required th:value="${client.getTelnumber1()}"></td>
+            <td><input type="text" id="officeTel1"  name="officeTel1" required th:value="${office.getTelnumber1()}"></td>
             </tr>
 
             <tr>
             <td><label for="abc">Телефон 2:</label></td>
-            <td><input type="text" id="clientTel2"  name="clientTel2" th:value="${client.getTelnumber2()}"></td>
-            </tr>
-
-            <tr>
-            <td><label for="abc">Отделение:</label></td>
-            <td><input type="text" id="officeName" name="officeName"></td>
+            <td><input type="text" id="officeTel2"  name="officeTel2" th:value="${office.getTelnumber2()}"></td>
             </tr>
 
             <tr>

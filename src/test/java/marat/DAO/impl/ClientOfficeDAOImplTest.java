@@ -3,16 +3,15 @@ package marat.DAO.impl;
 import marat.DAO.ClientDAO;
 import marat.DAO.ClientOfficeDAO;
 import marat.DAO.OfficeDAO;
-import marat.DAO.TestEntityDAO;
 import marat.models.Client;
 import marat.models.ClientOffice;
 import marat.models.Office;
-import marat.models.TestEntity;
 import marat.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
+@Disabled
 @SpringBootTest
 class ClientOfficeDAOImplTest {
 

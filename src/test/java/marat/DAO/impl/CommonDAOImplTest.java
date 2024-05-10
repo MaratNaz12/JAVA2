@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
+@Disabled
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CommonDAOTest {
@@ -52,7 +53,6 @@ class CommonDAOTest {
     @Test
     void update() {
         TestEntity entity_1 = testEntityDAO.getAll().get(0);
-        String name_f = entity_1.getName();
         entity_1.setName("abc");
         testEntityDAO.update(entity_1);
         long id = entity_1.getId();

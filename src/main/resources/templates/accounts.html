@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Счета</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:replace="general :: page-header"> </div>
+
+<div class="accounts">
+    <h4>Добавить счет:</h4>
+
+    <table>
+        <tbody>
+        <form method="post" action="/saveAccount">
+            <tr>
+            <td><label for="abc">Стартовый счет:</label></td>
+            <td><input type="text" id="accountCurbalance" required name="accountCurbalance"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">Стартовая доходность:</label></td>
+            <td><input type="text" id="accountCuraccum" required name="accountCuraccum"></td>
+            </tr>
+
+            <tr>
+                <td><label for="abc">ID клиента:</label></td>
+                <td><input type="text" id="accountClientId" required name="accountClientId"></td>
+            </tr>
+
+            <tr>
+            <td><label for="abc">ID отделения:</label></td>
+            <td><input type="text" id="accountOfficeId" required name="accountOfficeId"></td>
+            </tr>
+
+            <tr>
+            <td><input id="submitButton" type="submit" value="Добавить"></td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+    <br>
+    
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> ФИО клиента </th>
+            <th scope="col"> Отделение </th>
+        </tr>
+        </thead>
+        <tbody id="table">
+        <tr th:each="account : ${accounts}">
+            <td><a th:href="'/account?accountId=' + ${account.getId()}">
+                <span th:text="${account.getId()}"> </span></a></td>
+
+            <td><a th:href="'/client?clientId=' + ${account.getClient_id().getId()}">
+                <span th:text="${clientService.getById(account.getClient_id().getId()).getName()}"> </span></a></td>
+
+            <td><a th:href="'/office?officeId=' + ${account.getOffice_id().getId()}">
+                <span th:text="${officeService.getById(account.getOffice_id().getId()).getName()}"> </span></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

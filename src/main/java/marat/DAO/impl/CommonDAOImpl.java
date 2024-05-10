@@ -5,26 +5,14 @@ import marat.models.CommonEntity;
 import marat.utils.HibernateSessionFactoryUtil;
 import marat.utils.ReflectionTools;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 
 @Repository
 public abstract class CommonDAOImpl<T extends CommonEntity> implements CommonDAO<T> {
-//    @Autowired
-//    SessionFactory sessionFactory;
-//
-//    @Override
-//    public Session getSession() {
-//        return sessionFactory.getCurrentSession();
-//    }
-
 
     protected Class<T> persistentClass = ReflectionTools.getGeneric(getClass(), 0);;
 

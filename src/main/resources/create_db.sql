@@ -43,13 +43,13 @@ ALTER SEQUENCE public.account_id_seq OWNED BY public.account.id;
 
 CREATE TABLE public.bankacctype (
     id bigint NOT NULL,
-    dayperiod bigint NOT NULL,
-    maxdaccrual bigint NOT NULL,
-    maxdebit bigint NOT NULL,
-    minaccrual bigint NOT NULL,
-    mindebit bigint NOT NULL,
-    name character varying(255) NOT NULL,
-    profit double precision NOT NULL
+    dayperiod bigint,
+    maxdaccrual bigint,
+    maxdebit bigint,
+    minaccrual bigint,
+    mindebit bigint,
+    name character varying(255),
+    profit double precision
 );
 
 ALTER TABLE public.bankacctype OWNER TO postgres;
@@ -212,14 +212,14 @@ ALTER TABLE ONLY public.testentity
 ALTER TABLE ONLY public.operation
     ADD CONSTRAINT fk96h48rrbl3k07wokgubek65h7 FOREIGN KEY (toacc) REFERENCES public.account(id);
 ALTER TABLE ONLY public.clientoffice
-    ADD CONSTRAINT fkf6o823p54um1ex9vchb7ct766 FOREIGN KEY (client) REFERENCES public.client(id);
+    ADD CONSTRAINT fkf6o823p54um1ex9vchb7ct766 FOREIGN KEY (client) REFERENCES public.client(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.operation
     ADD CONSTRAINT fkjl5ixhs1b728xe8k9dc1ud5fl FOREIGN KEY (fromacc) REFERENCES public.account(id);
 ALTER TABLE ONLY public.clientoffice
-    ADD CONSTRAINT fkkc9jjfr951nv3qgq04k0tchs9 FOREIGN KEY (office) REFERENCES public.office(id);
+    ADD CONSTRAINT fkkc9jjfr951nv3qgq04k0tchs9 FOREIGN KEY (office) REFERENCES public.office(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.account
-    ADD CONSTRAINT fkkm8yb63h4ownvnlrbwnadntyn FOREIGN KEY (client_id) REFERENCES public.client(id);
+    ADD CONSTRAINT fkkm8yb63h4ownvnlrbwnadntyn FOREIGN KEY (client_id) REFERENCES public.client(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.account
-    ADD CONSTRAINT fkpdk0damdo2ij7ti13ynfryt9t FOREIGN KEY (office_id) REFERENCES public.office(id);
+    ADD CONSTRAINT fkpdk0damdo2ij7ti13ynfryt9t FOREIGN KEY (office_id) REFERENCES public.office(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.account
     ADD CONSTRAINT fkt57l9f830wehw0vsbykfaf1q1 FOREIGN KEY (bankacctype_id) REFERENCES public.bankacctype(id);

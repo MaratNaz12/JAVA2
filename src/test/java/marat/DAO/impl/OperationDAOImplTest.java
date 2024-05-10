@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,11 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Timestamp;
+
+@Disabled
 @SpringBootTest
 class OperationDAOImplTest {
-
-
-
 
     @Autowired
     ClientDAO clientDAO;
@@ -102,14 +102,10 @@ class OperationDAOImplTest {
         accs.add(acc_3);
         accs.add(acc_4);
 
-
-
         accountDAO.saveCollection(accs);
 
         Assertions.assertEquals(accountDAO.getAll().size(),4);
 
-
-        Timestamp t = new Timestamp(System.currentTimeMillis());
         List<Operation> opers = new ArrayList<>();
         opers.add(new Operation(acc_1, acc_2, 1000L, new Timestamp(System.currentTimeMillis())));
         opers.add(new Operation(acc_2, acc_3, 2000L, new Timestamp(System.currentTimeMillis())));

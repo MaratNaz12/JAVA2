@@ -8,17 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import marat.DAO.AccountDAO;
-import marat.DAO.BankAccTypeDAO;
 import marat.DAO.ClientDAO;
 import marat.DAO.ClientOfficeDAO;
 import marat.DAO.OfficeDAO;
 import marat.models.Account;
-import marat.models.BankAccType;
 import marat.models.Client;
 import marat.models.ClientOffice;
 import marat.models.Office;
 import marat.DAO.impl.AccountDAOImpl;
-import marat.DAO.impl.BankAccTypeDAOImpl;
 import marat.DAO.impl.ClientDAOImpl;
 import marat.DAO.impl.ClientOfficeDAOImpl;
 import marat.DAO.impl.OfficeDAOImpl;
@@ -37,16 +34,11 @@ public class ClientsController {
     @Autowired
     private final ClientOfficeDAO clientOfficeDAO = new ClientOfficeDAOImpl();
 
+    @Autowired
+    private final OfficeDAO officeDAO = new OfficeDAOImpl();
+
     @GetMapping("/clients")
     public String clients(Model model) {
-        List<Client> clients1 = new ArrayList<>();
-
-        for (int i = 1; i <= 3; ++i) {
-            clients1.add(new Client("name" + i, "890987324" + i, "890987371" + i, "ajsdfhlkasdfh@gmaol.com", "Moscow d" + i));
-        }
-
-        clientDAO.saveCollection(clients1);
-
         List<Client> clients = (List<Client>)clientDAO.getAll();
 
         model.addAttribute("clients", clients);
@@ -102,10 +94,29 @@ public class ClientsController {
                                @RequestParam(name = "clientEmail") String email,
                                @RequestParam(name = "clientTel1") String telnumber1,
                                @RequestParam(name = "clientTel2") String telnumber2,
+                               @RequestParam(name = "officeName", required = false) String officeName,
                                Model model) {
         Client client;
         if (clientId == null) {
             client = new Client(name, telnumber1, telnumber2, email, address);
+
+            if (officeName != "") {
+                boolean added = false;
+                for (Office office : officeDAO.getAll()) {
+                    System.out.println("debug " + officeName + " " + office.getName());
+                    if (office.getName().trim().startsWith(officeName.trim())) {
+                        ClientOffice clientOffice = new ClientOffice(office, client);
+                        clientOfficeDAO.save(clientOffice);
+                        added = true;
+                        break;
+                    }
+                }
+                if (!added) {
+                    model.addAttribute("error_msg", "В базе нет такого отделения");
+                    return "errorPage";
+                }
+            }
+
             clientDAO.save(client);
             return "redirect:/clients";
         } else {
@@ -121,6 +132,7 @@ public class ClientsController {
             client.setEmail(email);
             client.setTelnumber1(telnumber1);
             client.setTelnumber2(telnumber2);
+            clientDAO.update(client);
 
             return String.format("redirect:/client?clientId=%d", client.getId());
         }
